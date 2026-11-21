@@ -18,10 +18,10 @@ const PORTFOLIO_DATA = {
   },
 
   socials: {
-    email: "muzaffer.email@domain.com",
-    github: "https://github.com/muzaffer-ali-khan",
+    email: "muzaffer.ditspcs@gmail.com",
+    github: "https://github.com/muzafferditspcs",
     linkedin: "https://linkedin.com/in/muzaffer-ali-khan",
-    leetcode: "https://leetcode.com/u/username",
+    Instagram: "https://instagram.com/_withmuxaffar",
     twitter: "https://twitter.com/muzafferalikhan"
   },
 
@@ -44,7 +44,7 @@ const PORTFOLIO_DATA = {
       stack: ["Python", "PyTorch", "FastAPI", "Vector Search", "Next.js"],
       links: {
         demo: "https://demo.signallens.example.com",
-        github: "https://github.com/muzaffer-ali-khan/signal-lens",
+        github: "https://github.com/muzafferditspcs/signal-lens",
         hasLabNote: true
       },
       overview: {
@@ -115,7 +115,7 @@ const PORTFOLIO_DATA = {
       stack: ["Java", "C", "TypeScript", "HTML5 Canvas"],
       links: {
         demo: "https://demo.algopulse.example.com",
-        github: "https://github.com/muzaffer-ali-khan/algo-pulse",
+        github: "https://github.com/muzafferditspcs/algo-pulse",
         hasLabNote: true
       },
       overview: {
@@ -187,7 +187,7 @@ void dijkstra_step_record(Graph* g, uint32_t src, RingBuffer* stream) {
       stack: ["Python", "Scikit-learn", "SQL", "FastAPI"],
       links: {
         demo: "https://demo.pulsedrift.example.com",
-        github: "https://github.com/muzaffer-ali-khan/pulse-drift",
+        github: "https://github.com/muzafferditspcs/pulse-drift",
         hasLabNote: true
       },
       overview: {
