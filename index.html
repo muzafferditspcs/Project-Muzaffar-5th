@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muzaffer Ali Khan — Data Scientist · ML & AI Engineer · Srinagar, J&K</title>
+  <meta name="description" content="Portfolio of Muzaffer Ali Khan: Computer Science student at Cluster University Srinagar building at the intersection of core systems, Data Structures & Algorithms, and applied Machine Learning.">
+  <meta name="author" content="Muzaffer Ali Khan">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0B0C0E',
+            vermilion: '#E84A27',
+            cobalt: '#3B6EFF',
+            surface: {
+              card: 'var(--surface-card)',
+              subtle: 'var(--surface-card-subtle)',
+              elevated: 'var(--surface-elevated)'
+            },
+            structural: 'var(--border-structural)',
+            primary: 'var(--text-primary)',
+            secondary: 'var(--text-secondary)',
+            muted: 'var(--text-muted)'
+          },
+          fontFamily: {
+            display: ['Instrument Serif', 'Fraunces', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Editorial Stylesheet -->
+  <link rel="stylesheet" href="src/styles/editorial.css">
+</head>
+<body class="selection:bg-vermilion selection:text-white">
+
+  <!-- =========================================================================
+       1. EDITORIAL TOP BAR (STICKY GLASS HEADER)
+       ========================================================================= -->
+  <header class="sticky top-0 z-50 w-full glass-header transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      
+      <!-- Brand & Status Pill -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <a href="#" class="group flex items-center gap-2.5">
+          <span class="h-8 w-8 rounded-lg bg-vermilion/10 border border-vermilion/30 flex items-center justify-center font-mono font-bold text-xs text-vermilion group-hover:scale-105 transition-transform">
+            MAK
+          </span>
+          <div class="flex flex-col">
+            <span class="text-sm font-bold tracking-tight text-primary flex items-center gap-1.5 font-sans">
+              Muzaffer Ali Khan
+            </span>
+            <span class="text-[10px] font-mono text-muted uppercase tracking-widest hidden sm:inline">
+              Cluster University Srinagar
+            </span>
+          </div>
+        </a>
+
+        <!-- Live Status Pill -->
+        <div class="hidden xl:flex items-center gap-2 px-3 py-1 rounded-full bg-surface-subtle border border-structural text-[11px] font-mono">
+          <span class="relative flex h-2 w-2">
+            <span class="status-pulsing-dot absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span class="text-secondary font-medium tracking-wide">
+            OPEN TO INTERNSHIPS & COLLABS · SRINAGAR, J&K
+          </span>
+        </div>
+      </div>
+
+      <!-- Navigation Indices (Desktop) -->
+      <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+        <a href="#builds" class="nav-section-link px-3 py-1.5 text-xs font-mono text-muted hover:text-primary transition-colors flex items-center gap-1.5">
+          <span class="text-vermilion font-semibold">01</span> Builds
+        </a>
+        <a href="#lab-notes" class="nav-section-link px-3 py-1.5 text-xs font-mono text-muted hover:text-primary transition-colors flex items-center gap-1.5">
+          <span class="text-cobalt font-semibold">02</span> Lab Notes
+        </a>
+        <a href="#sandbox" class="nav-section-link px-3 py-1.5 text-xs font-mono text-muted hover:text-primary transition-colors flex items-center gap-1.5">
+          <span class="text-emerald-500 font-semibold">03</span> AlgoLab
+        </a>
+        <a href="#background" class="nav-section-link px-3 py-1.5 text-xs font-mono text-muted hover:text-primary transition-colors flex items-center gap-1.5">
+          <span class="text-amber-500 font-semibold">04</span> Philosophy
+        </a>
+        <a href="#contact" class="nav-section-link px-3 py-1.5 text-xs font-mono text-muted hover:text-primary transition-colors flex items-center gap-1.5">
+          <span class="text-vermilion font-semibold">05</span> Contact
+        </a>
+      </nav>
+
+      <!-- Action Controls: Theme Switcher & Quick CTA -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Live Srinagar IST Clock Pill -->
+        <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-subtle border border-structural text-[11px] font-mono text-secondary">
+          <span class="text-muted">LOC:</span>
+          <span id="ist-clock" class="font-medium text-primary">--:--:-- IST</span>
+        </div>
+
+        <!-- Dark/Light Theme Toggle -->
+        <button id="theme-toggle-btn" aria-label="Toggle theme" class="p-2 sm:px-2.5 sm:py-1.5 rounded-lg border border-structural bg-surface-subtle text-muted hover:text-primary transition-colors flex items-center gap-1.5 text-xs font-mono">
+          <span id="theme-icon-sun" class="flex items-center gap-1">
+            <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <span class="hidden lg:inline text-[11px]">Dark</span>
+          </span>
+          <span id="theme-icon-moon" class="hidden flex items-center gap-1">
+            <svg class="w-4 h-4 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <span class="hidden lg:inline text-[11px]">Light</span>
+          </span>
+        </button>
+
+        <!-- Quick Email Copy CTA -->
+        <button data-copy-email class="btn-primary hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+          </svg>
+          <span>Copy Email</span>
+        </button>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobile-menu-btn" aria-label="Open menu" class="md:hidden p-2 rounded-lg border border-structural bg-surface-subtle text-muted">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu-drawer" class="hidden md:hidden border-b border-structural bg-surface-card px-4 pt-3 pb-5 space-y-2">
+      <div class="px-2 py-1 text-[11px] font-mono text-muted uppercase">Navigation Index</div>
+      <a href="#builds" class="block px-3 py-2 rounded-lg text-sm font-mono text-secondary hover:text-primary hover:bg-surface-subtle">
+        <span class="text-vermilion">01</span> Featured Builds
+      </a>
+      <a href="#lab-notes" class="block px-3 py-2 rounded-lg text-sm font-mono text-secondary hover:text-primary hover:bg-surface-subtle">
+        <span class="text-cobalt">02</span> Lab Notes & Foundation
+      </a>
+      <a href="#sandbox" class="block px-3 py-2 rounded-lg text-sm font-mono text-secondary hover:text-primary hover:bg-surface-subtle">
+        <span class="text-emerald-500">03</span> Interactive AlgoLab
+      </a>
+      <a href="#background" class="block px-3 py-2 rounded-lg text-sm font-mono text-secondary hover:text-primary hover:bg-surface-subtle">
+        <span class="text-amber-500">04</span> Engineering Philosophy
+      </a>
+      <a href="#contact" class="block px-3 py-2 rounded-lg text-sm font-mono text-secondary hover:text-primary hover:bg-surface-subtle">
+        <span class="text-vermilion">05</span> Contact & Collabs
+      </a>
+      <div class="pt-3 border-t border-structural flex items-center justify-between">
+        <span class="text-xs font-mono text-muted">Status: Open to Collabs</span>
+        <button data-copy-email class="btn-primary text-xs font-mono px-3 py-1.5 rounded-md">
+          Copy Email
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- =========================================================================
+       2. BOLD EDITORIAL HERO SECTION
+       ========================================================================= -->
+  <section id="hero-section" class="relative pt-12 pb-16 sm:pt-20 sm:pb-28 overflow-hidden border-b border-structural">
+    <!-- Interactive Latent Grid / Dot-Matrix Canvas -->
+    <canvas id="hero-canvas"></canvas>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Eyebrow Telemetry Header -->
+      <div class="flex items-center gap-3 flex-wrap mb-6 sm:mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono">
+          <span class="h-1.5 w-1.5 rounded-full bg-vermilion"></span>
+          <span class="text-primary font-semibold tracking-wide">MUZAFFER ALI KHAN</span>
+          <span class="text-muted">/</span>
+          <span class="text-muted">CLUSTER UNIVERSITY SRINAGAR</span>
+        </div>
+
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-surface-subtle/60 border border-structural text-xs font-mono text-muted">
+          <span>COORDINATES:</span>
+          <span class="text-secondary font-medium">34.0837° N, 74.7973° E</span>
+        </div>
+
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-cobalt/10 border border-cobalt/30 text-xs font-mono text-cobalt">
+          <span>ALGORITHMIC CRAFT · ML SYSTEMS</span>
+        </div>
+      </div>
+
+      <!-- Monumental Headline & Manifesto -->
+      <div class="max-w-5xl">
+        <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-display font-bold text-primary tracking-tightest leading-[1.04] mb-6 sm:mb-8">
+          Turning messy signals, strong algorithms, and wild hypotheses into <span class="italic text-vermilion underline decoration-vermilion/40 underline-offset-8">working intelligence</span>.
+        </h1>
+
+        <p class="text-lg sm:text-xl md:text-2xl text-secondary font-sans font-normal leading-relaxed max-w-3xl mb-10">
+          CS student at Cluster University Srinagar building at the intersection of core systems, Data Structures & Algorithms, and applied Machine Learning—shipping personal AI builds that actually run.
+        </p>
+
+        <!-- CTA Buttons & Social Links -->
+        <div class="flex items-center flex-wrap gap-3 sm:gap-4 mb-12">
+          <a href="#builds" class="btn-primary px-6 py-3.5 rounded-xl text-sm font-mono font-semibold flex items-center gap-2">
+            <span>Explore Side Builds</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
+
+          <button data-copy-email class="btn-secondary px-5 py-3.5 rounded-xl text-sm font-mono font-medium flex items-center gap-2">
+            <svg class="w-4 h-4 text-vermilion" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+            </svg>
+            <span>Copy Email</span>
+          </button>
+
+          <!-- External Profiles -->
+          <div class="flex items-center gap-2 sm:ml-2">
+            <a href="https://github.com/muzaffer-ali-khan" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl border border-structural bg-surface-card hover:border-text-secondary text-secondary hover:text-primary transition-all" title="GitHub Profile">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+            </a>
+
+            <a href="https://linkedin.com/in/muzaffer-ali-khan" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl border border-structural bg-surface-card hover:border-text-secondary text-secondary hover:text-primary transition-all" title="LinkedIn Profile">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+              </svg>
+            </a>
+
+            <a href="https://leetcode.com/u/username" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl border border-structural bg-surface-card hover:border-text-secondary text-secondary hover:text-primary transition-all" title="LeetCode Competitive Profile">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 4.964 3.385c.309.012.62-.007.928-.058a5.96 5.96 0 0 0 1.838-.68 5.95 5.95 0 0 0 1.47-1.246l3.412-4.103a1.385 1.385 0 0 0-.174-1.954 1.385 1.385 0 0 0-1.954.174l-3.41 4.103a3.18 3.18 0 0 1-.786.666 3.19 3.19 0 0 1-.986.364 3.16 3.16 0 0 1-.994-.029 3.17 3.17 0 0 1-2.653-1.81 3.11 3.11 0 0 1-.187-.544 2.96 2.96 0 0 1-.033-1.264 2.82 2.82 0 0 1 .648-1.127l3.855-4.127 5.405-5.788a1.385 1.385 0 0 0-.96-2.366zM20.217 11.233H8.384a1.385 1.385 0 0 0 0 2.77h11.833a1.385 1.385 0 0 0 0-2.77z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Technical Telemetry Ribbon -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-6 border-t border-structural">
+        <div class="p-3.5 rounded-xl bg-surface-card border border-structural">
+          <div class="text-[11px] font-mono text-muted uppercase tracking-wider mb-1">01 / Low-Level Discipline</div>
+          <div class="text-sm font-semibold text-primary font-mono">Java · C · DSA Core</div>
+          <div class="text-xs text-secondary mt-0.5">Pointer hygiene, cache locality, invariants</div>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-surface-card border border-structural">
+          <div class="text-[11px] font-mono text-cobalt uppercase tracking-wider mb-1 font-semibold">02 / Applied Intelligence</div>
+          <div class="text-sm font-semibold text-primary font-mono">PyTorch · Vector RAG</div>
+          <div class="text-xs text-secondary mt-0.5">Evaluation slicing & deterministic guardrails</div>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-surface-card border border-structural">
+          <div class="text-[11px] font-mono text-vermilion uppercase tracking-wider mb-1 font-semibold">03 / Engineering Focus</div>
+          <div class="text-sm font-semibold text-primary font-mono">Fast, Tactile Builds</div>
+          <div class="text-xs text-secondary mt-0.5">Personal builds that actually run and scale</div>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-surface-card border border-structural">
+          <div class="text-[11px] font-mono text-emerald-500 uppercase tracking-wider mb-1 font-semibold">04 / Geographic Base</div>
+          <div class="text-sm font-semibold text-primary font-mono">Srinagar, Kashmir</div>
+          <div class="text-xs text-secondary mt-0.5">Cluster University Srinagar · Asia/Kolkata</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       3. EDITORIAL BIO & FIRST-PRINCIPLES MANIFESTO BRIDGE
+       ========================================================================= -->
+  <section class="py-16 sm:py-20 border-b border-structural bg-surface-card/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <div class="lg:col-span-4">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-surface-subtle border border-structural text-xs font-mono text-vermilion font-semibold uppercase mb-3">
+            First-Principles Stance
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-display font-bold text-primary tracking-tightest leading-tight">
+            Why algorithmic rigor matters more than blind prompting.
+          </h2>
+        </div>
+
+        <div class="lg:col-span-8 space-y-4">
+          <blockquote class="text-lg sm:text-xl text-primary font-sans leading-relaxed border-l-2 border-vermilion pl-5 sm:pl-6 italic font-normal">
+            "Grounded in C, Java, and Data Structures & Algorithms, I approach Data Science and AI from first principles. Outside classroom theory, I treat machine intelligence and code like a creative lab—building personal projects that stress-test model behavior, optimize algorithmic performance, and turn raw data into fast, tactile tools."
+          </blockquote>
+          
+          <div class="pt-2 flex items-center gap-3 text-xs font-mono text-muted pl-5 sm:pl-6">
+            <span>— MUZAFFER ALI KHAN</span>
+            <span>·</span>
+            <span>DATA SCIENTIST & ML ENGINEER</span>
+            <span>·</span>
+            <span class="text-secondary">SRINAGAR, J&K</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       4. FEATURED PERSONAL BUILDS (01 / BUILDS)
+       ========================================================================= -->
+  <section id="builds" class="py-16 sm:py-24 border-b border-structural">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 sm:mb-16">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-vermilion uppercase tracking-widest font-semibold mb-2">
+            <span>01 / FEATURED BUILDS</span>
+            <span>—</span>
+            <span>PERSONAL RESEARCH & APPLIED CODE</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary tracking-tightest">
+            Tactile Builds, Benchmarked.
+          </h2>
+        </div>
+        <p class="text-sm font-mono text-secondary max-w-md">
+          Zero toy tutorials. Every build solves a real systems failure mode, benchmarks empirical tradeoffs, and provides inspectable telemetry.
+        </p>
+      </div>
+
+      <!-- 3 Editorial Case Study Cards -->
+      <div class="space-y-12 sm:space-y-16">
+
+        <!-- BUILD CARD 1: SignalLens -->
+        <article id="build-card-signal-lens" class="editorial-card rounded-2xl overflow-hidden p-6 sm:p-8 lg:p-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Header & Meta -->
+            <div class="lg:col-span-5 space-y-4">
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <span class="badge-vermilion text-xs font-mono px-2.5 py-1 rounded-md font-semibold uppercase">
+                  AI / ML EVALS
+                </span>
+                <span class="badge-cobalt text-xs font-mono px-2.5 py-1 rounded-md font-semibold uppercase">
+                  CUT UNSUPPORTED CLAIMS BY 41%
+                </span>
+              </div>
+
+              <div>
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-primary tracking-tightest">
+                  SignalLens
+                </h3>
+                <p class="text-xs font-mono text-muted mt-1 uppercase tracking-wider">
+                  Autonomous Research & Eval Workbench
+                </p>
+              </div>
+
+              <p class="text-sm sm:text-base font-sans italic text-vermilion/90 leading-relaxed font-medium">
+                "What happens when you combine strict retrieval guardrails, algorithmic ranking, and an automated failure-slicing harness."
+              </p>
+
+              <p class="text-sm text-secondary leading-relaxed">
+                An autonomous evaluation harness and retrieval benchmark engine designed to eliminate LLM hallucination in multi-hop research queries through strict citation verification and failure-slice clustering.
+              </p>
+
+              <!-- Stack Tags -->
+              <div class="pt-2">
+                <div class="text-[11px] font-mono text-muted uppercase mb-2">Core Tech Stack:</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">Python</span>
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">PyTorch</span>
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">FastAPI</span>
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">Vector Search</span>
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">Next.js</span>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="pt-4 flex items-center flex-wrap gap-3">
+                <button data-open-labnote="signal-lens" class="btn-primary text-xs font-mono px-4 py-2 rounded-lg flex items-center gap-1.5 font-semibold">
+                  <span>Read Lab Note</span> ↗
+                </button>
+                <a href="https://demo.signallens.example.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono px-3.5 py-2 rounded-lg flex items-center gap-1.5">
+                  <span>Live Demo</span> ↗
+                </a>
+                <a href="https://github.com/muzaffer-ali-khan/signal-lens" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono px-3.5 py-2 rounded-lg flex items-center gap-1.5" title="View GitHub Code">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                  </svg>
+                  <span>Repo</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Interactive Expandable Tabs Panel -->
+            <div class="lg:col-span-7 bg-surface-subtle/50 rounded-xl border border-structural p-5 sm:p-6">
+              
+              <!-- Tab Switcher Navigation -->
+              <div class="flex items-center justify-between pb-4 border-b border-structural mb-5">
+                <div class="flex items-center gap-1.5 p-1 rounded-lg bg-surface-card border border-structural">
+                  <button class="card-tab-btn px-3 py-1.5 rounded-md text-xs font-mono transition-all font-semibold bg-vermilion text-white" data-card-id="signal-lens" data-tab-target="overview" data-active="true">
+                    Overview & Metrics
+                  </button>
+                  <button class="card-tab-btn px-3 py-1.5 rounded-md text-xs font-mono transition-all font-semibold text-muted hover:text-primary" data-card-id="signal-lens" data-tab-target="architecture" data-active="false">
+                    Architecture & Tradeoffs
+                  </button>
+                </div>
+                <span class="text-[11px] font-mono text-muted hidden sm:inline">ID: SL-01</span>
+              </div>
+
+              <!-- Tab Panel 1: Overview & Metrics -->
+              <div class="panel-overview space-y-4">
+                <div class="p-3.5 rounded-lg bg-surface-card border border-structural">
+                  <div class="text-[11px] font-mono text-muted uppercase">Primary Benchmark Result</div>
+                  <div class="text-base font-semibold text-primary font-mono mt-0.5">
+                    Benchmarked across 1,200 test prompts; cut unsupported claims by 41%.
+                  </div>
+                </div>
+
+                <div class="space-y-2.5">
+                  <div class="text-xs font-mono text-muted uppercase tracking-wider font-semibold">Key Capabilities:</div>
+                  <ul class="space-y-2 text-sm text-secondary">
+                    <li class="flex items-start gap-2">
+                      <span class="text-cobalt mt-0.5">▸</span>
+                      <span>Automated failure-slicing engine groups hallucinated responses into semantic error clusters.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-cobalt mt-0.5">▸</span>
+                      <span>Hybrid sparse-dense retrieval combines BM25 lexical recall with dense cross-encoder re-ranking.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-cobalt mt-0.5">▸</span>
+                      <span>Zero ungrounded assertions: strict mathematical citation-to-source bounding.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="pt-3 border-t border-structural flex items-center justify-between text-xs font-mono text-muted">
+                  <span>P95 End-to-End Latency: <strong class="text-primary font-semibold">1.38s</strong></span>
+                  <span class="text-emerald-400">● 100% Deterministic Eval Rig</span>
+                </div>
+              </div>
+
+              <!-- Tab Panel 2: Architecture & Tradeoffs -->
+              <div class="panel-architecture hidden space-y-4">
+                <div class="p-3.5 rounded-lg bg-surface-card border border-amber-500/30 bg-amber-500/5">
+                  <div class="text-[11px] font-mono text-amber-500 uppercase font-semibold">Accepted Architectural Trade-off</div>
+                  <div class="text-xs sm:text-sm text-secondary font-mono mt-1 leading-relaxed">
+                    "Prioritized deterministic citation checks and hybrid lexical-semantic retrieval over oversized context windows to keep latency under 1.4s."
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <div class="text-xs font-mono text-muted uppercase tracking-wider font-semibold">Engine Decisions:</div>
+                  <ul class="space-y-1.5 text-xs font-mono text-secondary">
+                    <li class="flex items-start gap-2">
+                      <span class="text-vermilion">1.</span>
+                      <span>Replaced naive 128k raw context injection with top-k graph-ranked chunk nodes.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vermilion">2.</span>
+                      <span>FastAPI asynchronous streaming pipeline paired with batched PyTorch embedding inference.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vermilion">3.</span>
+                      <span>Inverted index cache for instant deterministic reference validation.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="pt-2 text-xs font-mono text-muted flex items-center justify-between">
+                  <span>Memory Model: <strong class="text-primary">512MB RAM partition</strong></span>
+                  <button data-open-labnote="signal-lens" class="text-vermilion hover:underline font-semibold">
+                    Inspect verification code →
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </article>
+
+
+        <!-- BUILD CARD 2: AlgoPulse -->
+        <article id="build-card-algo-pulse" class="editorial-card rounded-2xl overflow-hidden p-6 sm:p-8 lg:p-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Header & Meta -->
+            <div class="lg:col-span-5 space-y-4">
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <span class="badge-vermilion text-xs font-mono px-2.5 py-1 rounded-md font-semibold uppercase">
+                  SYSTEMS & DSA
+                </span>
+                <span class="badge-cobalt text-xs font-mono px-2.5 py-1 rounded-md font-semibold uppercase">
+                  15+ CLASSIC ALGORITHMS BENCHMARKED
+                </span>
+              </div>
+
+              <div>
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-primary tracking-tightest">
+                  AlgoPulse
+                </h3>
+                <p class="text-xs font-mono text-muted mt-1 uppercase tracking-wider">
+                  Visual DSA & Graph Pathfinder Engine
+                </p>
+              </div>
+
+              <p class="text-sm sm:text-base font-sans italic text-vermilion/90 leading-relaxed font-medium">
+                "An interactive algorithmic sandbox turning complex graph traversals, dynamic programming, and memory trade-offs into live visual telemetry."
+              </p>
+
+              <p class="text-sm text-secondary leading-relaxed">
+                A high-performance visual laboratory for computer science students and engineers to dissect time/space complexity, cache behaviors, and recursion trees in real-time.
+              </p>
+
+              <!-- Stack Tags -->
+              <div class="pt-2">
+                <div class="text-[11px] font-mono text-muted uppercase mb-2">Core Tech Stack:</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">Java</span>
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">C</span>
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">TypeScript</span>
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">HTML5 Canvas</span>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="pt-4 flex items-center flex-wrap gap-3">
+                <button data-open-labnote="algo-pulse" class="btn-primary text-xs font-mono px-4 py-2 rounded-lg flex items-center gap-1.5 font-semibold">
+                  <span>Read Lab Note</span> ↗
+                </button>
+                <a href="#sandbox" class="btn-secondary text-xs font-mono px-3.5 py-2 rounded-lg flex items-center gap-1.5">
+                  <span>Try Live Sandbox</span> ↓
+                </a>
+                <a href="https://github.com/muzaffer-ali-khan/algo-pulse" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono px-3.5 py-2 rounded-lg flex items-center gap-1.5" title="View GitHub Code">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                  </svg>
+                  <span>Repo</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Interactive Expandable Tabs Panel -->
+            <div class="lg:col-span-7 bg-surface-subtle/50 rounded-xl border border-structural p-5 sm:p-6">
+              
+              <!-- Tab Switcher Navigation -->
+              <div class="flex items-center justify-between pb-4 border-b border-structural mb-5">
+                <div class="flex items-center gap-1.5 p-1 rounded-lg bg-surface-card border border-structural">
+                  <button class="card-tab-btn px-3 py-1.5 rounded-md text-xs font-mono transition-all font-semibold bg-vermilion text-white" data-card-id="algo-pulse" data-tab-target="overview" data-active="true">
+                    Overview & Metrics
+                  </button>
+                  <button class="card-tab-btn px-3 py-1.5 rounded-md text-xs font-mono transition-all font-semibold text-muted hover:text-primary" data-card-id="algo-pulse" data-tab-target="architecture" data-active="false">
+                    Architecture & Tradeoffs
+                  </button>
+                </div>
+                <span class="text-[11px] font-mono text-muted hidden sm:inline">ID: AP-02</span>
+              </div>
+
+              <!-- Tab Panel 1: Overview & Metrics -->
+              <div class="panel-overview space-y-4">
+                <div class="p-3.5 rounded-lg bg-surface-card border border-structural">
+                  <div class="text-[11px] font-mono text-muted uppercase">Algorithmic Coverage</div>
+                  <div class="text-base font-semibold text-primary font-mono mt-0.5">
+                    Benchmarks time/space complexity side-by-side across 15+ classic graph and sorting algorithms.
+                  </div>
+                </div>
+
+                <div class="space-y-2.5">
+                  <div class="text-xs font-mono text-muted uppercase tracking-wider font-semibold">Key Capabilities:</div>
+                  <ul class="space-y-2 text-sm text-secondary">
+                    <li class="flex items-start gap-2">
+                      <span class="text-cobalt mt-0.5">▸</span>
+                      <span>Side-by-side time/space complexity telemetry across Dijkstra, A*, Floyd-Warshall, and QuickSort variants.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-cobalt mt-0.5">▸</span>
+                      <span>Zero-garbage-collection canvas render loop maintaining steady 60 FPS under 100,000 node graphs.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-cobalt mt-0.5">▸</span>
+                      <span>Interactive memory layout viewer demonstrating stack frames, heap allocations, and pointer dereferences.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="pt-3 border-t border-structural flex items-center justify-between text-xs font-mono text-muted">
+                  <span>Frame Budget Adherence: <strong class="text-primary font-semibold">99.4% @ 60 FPS</strong></span>
+                  <span class="text-emerald-400">● Zero GC pauses</span>
+                </div>
+              </div>
+
+              <!-- Tab Panel 2: Architecture & Tradeoffs -->
+              <div class="panel-architecture hidden space-y-4">
+                <div class="p-3.5 rounded-lg bg-surface-card border border-amber-500/30 bg-amber-500/5">
+                  <div class="text-[11px] font-mono text-amber-500 uppercase font-semibold">Accepted Architectural Trade-off</div>
+                  <div class="text-xs sm:text-sm text-secondary font-mono mt-1 leading-relaxed">
+                    "Implemented zero-overhead step instrumentation to visualize recursion trees and heap states without distorting execution metrics."
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <div class="text-xs font-mono text-muted uppercase tracking-wider font-semibold">Systems Architecture:</div>
+                  <ul class="space-y-1.5 text-xs font-mono text-secondary">
+                    <li class="flex items-start gap-2">
+                      <span class="text-vermilion">1.</span>
+                      <span>Separated execution engine (compiled from C/Java) from browser DOM rendering.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vermilion">2.</span>
+                      <span>Circular ring buffer for state snapshots to enable instant scrubbing backward/forward.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vermilion">3.</span>
+                      <span>Bit-packed adjacency lists for cache-dense graph node storage.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="pt-2 text-xs font-mono text-muted flex items-center justify-between">
+                  <span>Memory Model: <strong class="text-primary">Flat TypedArray Buffers</strong></span>
+                  <button data-open-labnote="algo-pulse" class="text-vermilion hover:underline font-semibold">
+                    Inspect C step recorder →
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </article>
+
+
+        <!-- BUILD CARD 3: PulseDrift -->
+        <article id="build-card-pulse-drift" class="editorial-card rounded-2xl overflow-hidden p-6 sm:p-8 lg:p-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Header & Meta -->
+            <div class="lg:col-span-5 space-y-4">
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <span class="badge-vermilion text-xs font-mono px-2.5 py-1 rounded-md font-semibold uppercase">
+                  MODEL MONITORING
+                </span>
+                <span class="badge-cobalt text-xs font-mono px-2.5 py-1 rounded-md font-semibold uppercase">
+                  SUB-SECOND DRIFT DETECTION
+                </span>
+              </div>
+
+              <div>
+                <h3 class="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-primary tracking-tightest">
+                  PulseDrift
+                </h3>
+                <p class="text-xs font-mono text-muted mt-1 uppercase tracking-wider">
+                  Local Data & Model Behavior Monitor
+                </p>
+              </div>
+
+              <p class="text-sm sm:text-base font-sans italic text-vermilion/90 leading-relaxed font-medium">
+                "Because shipping a model without an honest drift and error-slice monitor is just guessing with confidence."
+              </p>
+
+              <p class="text-sm text-secondary leading-relaxed">
+                A lightweight, local-first model telemetry and dataset drift diagnostic tool that flags covariate shift, subgroup performance drops, and data quality degradation without needing a heavy cloud infrastructure stack.
+              </p>
+
+              <!-- Stack Tags -->
+              <div class="pt-2">
+                <div class="text-[11px] font-mono text-muted uppercase mb-2">Core Tech Stack:</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">Python</span>
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">Scikit-learn</span>
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">SQL</span>
+                  <span class="px-2.5 py-1 rounded-md bg-surface-subtle border border-structural text-xs font-mono text-secondary font-medium">FastAPI</span>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="pt-4 flex items-center flex-wrap gap-3">
+                <button data-open-labnote="pulse-drift" class="btn-primary text-xs font-mono px-4 py-2 rounded-lg flex items-center gap-1.5 font-semibold">
+                  <span>Read Lab Note</span> ↗
+                </button>
+                <a href="https://demo.pulsedrift.example.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono px-3.5 py-2 rounded-lg flex items-center gap-1.5">
+                  <span>Live Demo</span> ↗
+                </a>
+                <a href="https://github.com/muzaffer-ali-khan/pulse-drift" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono px-3.5 py-2 rounded-lg flex items-center gap-1.5" title="View GitHub Code">
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                  </svg>
+                  <span>Repo</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Interactive Expandable Tabs Panel -->
+            <div class="lg:col-span-7 bg-surface-subtle/50 rounded-xl border border-structural p-5 sm:p-6">
+              
+              <!-- Tab Switcher Navigation -->
+              <div class="flex items-center justify-between pb-4 border-b border-structural mb-5">
+                <div class="flex items-center gap-1.5 p-1 rounded-lg bg-surface-card border border-structural">
+                  <button class="card-tab-btn px-3 py-1.5 rounded-md text-xs font-mono transition-all font-semibold bg-vermilion text-white" data-card-id="pulse-drift" data-tab-target="overview" data-active="true">
+                    Overview & Metrics
+                  </button>
+                  <button class="card-tab-btn px-3 py-1.5 rounded-md text-xs font-mono transition-all font-semibold text-muted hover:text-primary" data-card-id="pulse-drift" data-tab-target="architecture" data-active="false">
+                    Architecture & Tradeoffs
+                  </button>
+                </div>
+                <span class="text-[11px] font-mono text-muted hidden sm:inline">ID: PD-03</span>
+              </div>
+
+              <!-- Tab Panel 1: Overview & Metrics -->
+              <div class="panel-overview space-y-4">
+                <div class="p-3.5 rounded-lg bg-surface-card border border-structural">
+                  <div class="text-[11px] font-mono text-muted uppercase">Real-Time Metric</div>
+                  <div class="text-base font-semibold text-primary font-mono mt-0.5">
+                    Surfaces silent subgroup degradation and feature drift in milliseconds on local datasets.
+                  </div>
+                </div>
+
+                <div class="space-y-2.5">
+                  <div class="text-xs font-mono text-muted uppercase tracking-wider font-semibold">Key Capabilities:</div>
+                  <ul class="space-y-2 text-sm text-secondary">
+                    <li class="flex items-start gap-2">
+                      <span class="text-cobalt mt-0.5">▸</span>
+                      <span>Kolmogorov-Smirnov and Population Stability Index (PSI) drift alarms calculated on local SQLite shards.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-cobalt mt-0.5">▸</span>
+                      <span>Automated slice analysis identifies demographic or feature subgroups suffering severe recall drop.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-cobalt mt-0.5">▸</span>
+                      <span>Zero external cloud dependencies: runs completely in local dev or edge environments.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="pt-3 border-t border-structural flex items-center justify-between text-xs font-mono text-muted">
+                  <span>100k Row Drift Scan: <strong class="text-primary font-semibold">480ms</strong></span>
+                  <span class="text-emerald-400">● 100% Local Sovereignty</span>
+                </div>
+              </div>
+
+              <!-- Tab Panel 2: Architecture & Tradeoffs -->
+              <div class="panel-architecture hidden space-y-4">
+                <div class="p-3.5 rounded-lg bg-surface-card border border-amber-500/30 bg-amber-500/5">
+                  <div class="text-[11px] font-mono text-amber-500 uppercase font-semibold">Accepted Architectural Trade-off</div>
+                  <div class="text-xs sm:text-sm text-secondary font-mono mt-1 leading-relaxed">
+                    "Designed for lightweight local execution rather than heavy distributed clusters."
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <div class="text-xs font-mono text-muted uppercase tracking-wider font-semibold">Engineering Design:</div>
+                  <ul class="space-y-1.5 text-xs font-mono text-secondary">
+                    <li class="flex items-start gap-2">
+                      <span class="text-vermilion">1.</span>
+                      <span>Vectorized statistical metrics via NumPy and Scikit-learn array operations.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vermilion">2.</span>
+                      <span>Polars & DuckDB local columnar engine for instant aggregations over parquet batches.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-vermilion">3.</span>
+                      <span>Self-contained single-binary reporting output with embedded visual charts.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="pt-2 text-xs font-mono text-muted flex items-center justify-between">
+                  <span>Memory Ceiling: <strong class="text-primary">&lt; 250 MB</strong></span>
+                  <button data-open-labnote="pulse-drift" class="text-vermilion hover:underline font-semibold">
+                    Inspect PSI calculation formula →
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       5. INTERACTIVE ALGOPULSE MINI SANDBOX & COMPLEXITY BENCHMARKER
+       ========================================================================= -->
+  <section id="sandbox" class="py-16 sm:py-24 border-b border-structural bg-surface-card/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-emerald-500 uppercase tracking-widest font-semibold mb-2">
+            <span>03 / INTERACTIVE LAB</span>
+            <span>—</span>
+            <span>LIVE ALGOPULSE ENGINE RUNTIME</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-display font-bold text-primary tracking-tightest">
+            Visual DSA Sandbox
+          </h2>
+        </div>
+        <p class="text-sm font-mono text-secondary max-w-md">
+          Test Muzaffer's pathfinding and search heuristics in real-time. Click any grid cell to toggle wall obstacles, choose an algorithm, and run.
+        </p>
+      </div>
+
+      <!-- Sandbox Interactive Card -->
+      <div class="editorial-card rounded-2xl p-6 sm:p-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Sandbox Controls & Telemetry -->
+          <div class="lg:col-span-4 space-y-5">
+            <div>
+              <label class="block text-xs font-mono text-muted uppercase font-semibold mb-2">Select Algorithm / Heuristic</label>
+              <select id="algo-select" class="w-full px-3.5 py-2.5 rounded-xl bg-surface-subtle border border-structural text-sm font-mono text-primary focus:outline-none focus:border-vermilion">
+                <option value="dijkstra">Dijkstra's Shortest Path — O(V + E log V)</option>
+                <option value="astar">A* Heuristic (Manhattan) — O(E)</option>
+                <option value="bfs">Breadth-First Search (Unweighted) — O(V + E)</option>
+              </select>
+            </div>
+
+            <!-- Execution Buttons -->
+            <div class="flex items-center gap-2.5">
+              <button id="algo-run-btn" class="btn-primary flex-1 py-2.5 px-4 rounded-xl text-xs font-mono font-semibold flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                <span>Run Pathfinder</span>
+              </button>
+              <button id="algo-reset-btn" class="btn-secondary py-2.5 px-3.5 rounded-xl text-xs font-mono text-muted hover:text-primary">
+                Clear
+              </button>
+              <button id="algo-random-btn" class="btn-secondary py-2.5 px-3.5 rounded-xl text-xs font-mono text-muted hover:text-primary" title="Generate random obstacle walls">
+                Randomize
+              </button>
+            </div>
+
+            <!-- Live Telemetry Readout -->
+            <div class="p-4 rounded-xl bg-surface-subtle border border-structural space-y-3">
+              <div class="text-xs font-mono text-muted uppercase font-semibold border-b border-structural pb-2 flex items-center justify-between">
+                <span>Execution Telemetry</span>
+                <span class="text-emerald-400 font-normal">● Ready</span>
+              </div>
+
+              <div class="grid grid-cols-3 gap-2 text-center font-mono">
+                <div class="p-2 rounded bg-surface-card border border-structural">
+                  <div class="text-[10px] text-muted">VISITED</div>
+                  <div id="algo-metric-visited" class="text-base font-bold text-cobalt mt-0.5">0</div>
+                </div>
+
+                <div class="p-2 rounded bg-surface-card border border-structural">
+                  <div class="text-[10px] text-muted">HOPS</div>
+                  <div id="algo-metric-path" class="text-base font-bold text-vermilion mt-0.5">0</div>
+                </div>
+
+                <div class="p-2 rounded bg-surface-card border border-structural">
+                  <div class="text-[10px] text-muted">LATENCY</div>
+                  <div id="algo-metric-time" class="text-base font-bold text-primary mt-0.5">0ms</div>
+                </div>
+              </div>
+
+              <div class="text-[11px] font-mono text-secondary pt-1 flex items-center justify-between">
+                <span>Grid: 12 × 7 Nodes</span>
+                <span>Heap: Compact Array</span>
+              </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="flex items-center gap-4 text-xs font-mono text-muted flex-wrap">
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-sm bg-emerald-500"></span>
+                <span>Source (S)</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-sm bg-vermilion"></span>
+                <span>Goal (G)</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-sm bg-[#2D313E]"></span>
+                <span>Obstacle</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-sm bg-cobalt/30 border border-cobalt"></span>
+                <span>Frontier</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sandbox Live Grid Display -->
+          <div class="lg:col-span-8 bg-[#0D0E12] p-4 sm:p-6 rounded-xl border border-structural">
+            <div id="sandbox-grid" class="grid gap-1.5 w-full">
+              <!-- Dynamically populated by setupAlgoPulseSandbox in main.js -->
+            </div>
+            <div class="mt-4 flex items-center justify-between text-xs font-mono text-muted">
+              <span>Interactive Algorithmic Sandbox</span>
+              <span class="text-secondary font-medium">Click any empty cell to place/remove wall obstacles</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       6. LAB NOTES, STACK & FOUNDATION BENTO GRID (02 / LAB NOTES)
+       ========================================================================= -->
+  <section id="lab-notes" class="py-16 sm:py-24 border-b border-structural">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 sm:mb-16">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono text-cobalt uppercase tracking-widest font-semibold mb-2">
+            <span>02 / LAB NOTES & FOUNDATION</span>
+            <span>—</span>
+            <span>SYSTEMS, PRINCIPLES & TELEMETRY</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary tracking-tightest">
+            The Algorithmic Foundation.
+          </h2>
+        </div>
+        <p class="text-sm font-mono text-secondary max-w-md">
+          How low-level memory discipline in C and Java powers scalable Machine Learning and deterministic evaluation.
+        </p>
+      </div>
+
+      <!-- Bento Grid (4 Cards Asymmetric) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+
+        <!-- Bento Card 1: Categorized Technical Stack (Col 7) -->
+        <div class="lg:col-span-7 editorial-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+              <div>
+                <span class="text-xs font-mono text-muted uppercase tracking-wider">Card 01 / Technical Stack</span>
+                <h3 class="text-xl sm:text-2xl font-display font-bold text-primary tracking-tightest mt-1">
+                  Core Skills & Working Stack
+                </h3>
+              </div>
+
+              <!-- Interactive Category Filter Buttons -->
+              <div class="flex items-center gap-1.5 p-1 rounded-lg bg-surface-subtle border border-structural text-xs font-mono">
+                <button class="skill-category-filter-btn px-2.5 py-1 rounded bg-vermilion text-white font-semibold transition-colors" data-category="all">
+                  All
+                </button>
+                <button class="skill-category-filter-btn px-2.5 py-1 rounded bg-surface-subtle text-muted hover:text-primary transition-colors" data-category="systems">
+                  Systems & DSA
+                </button>
+                <button class="skill-category-filter-btn px-2.5 py-1 rounded bg-surface-subtle text-muted hover:text-primary transition-colors" data-category="ai">
+                  Data & AI
+                </button>
+                <button class="skill-category-filter-btn px-2.5 py-1 rounded bg-surface-subtle text-muted hover:text-primary transition-colors" data-category="web">
+                  Web & Tools
+                </button>
+              </div>
+            </div>
+
+            <!-- Skills List Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6" id="skills-grid">
+              
+              <!-- Systems & DSA -->
+              <div class="skill-item-card p-3 rounded-xl bg-surface-subtle border border-structural" data-category="systems">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono font-semibold text-sm text-primary">Java</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">ADVANCED</span>
+                </div>
+                <p class="text-xs text-secondary mt-1">OOP patterns, concurrency, collection internals</p>
+                <div class="flex gap-1.5 mt-2">
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">Generics</span>
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">JVM Internals</span>
+                </div>
+              </div>
+
+              <div class="skill-item-card p-3 rounded-xl bg-surface-subtle border border-structural" data-category="systems">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono font-semibold text-sm text-primary">C</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cobalt/10 text-cobalt border border-cobalt/20 font-semibold">PROFICIENT</span>
+                </div>
+                <p class="text-xs text-secondary mt-1">Manual memory, pointer arithmetic, systems code</p>
+                <div class="flex gap-1.5 mt-2">
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">Pointers</span>
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">POSIX</span>
+                </div>
+              </div>
+
+              <div class="skill-item-card p-3 rounded-xl bg-surface-subtle border border-structural" data-category="systems">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono font-semibold text-sm text-primary">Data Structures & Algo (DSA)</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">ADVANCED</span>
+                </div>
+                <p class="text-xs text-secondary mt-1">Graphs, dynamic programming, heap structures</p>
+                <div class="flex gap-1.5 mt-2">
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">O(log N)</span>
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">Invariants</span>
+                </div>
+              </div>
+
+              <div class="skill-item-card p-3 rounded-xl bg-surface-subtle border border-structural" data-category="systems">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono font-semibold text-sm text-primary">Object-Oriented Design</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">ADVANCED</span>
+                </div>
+                <p class="text-xs text-secondary mt-1">SOLID principles, modular decoupling, testability</p>
+                <div class="flex gap-1.5 mt-2">
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">SOLID</span>
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">Patterns</span>
+                </div>
+              </div>
+
+              <!-- Data Science & AI -->
+              <div class="skill-item-card p-3 rounded-xl bg-surface-subtle border border-structural" data-category="ai">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono font-semibold text-sm text-primary">Python</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">ADVANCED</span>
+                </div>
+                <p class="text-xs text-secondary mt-1">Vectorized compute, async pipelines, profiling</p>
+                <div class="flex gap-1.5 mt-2">
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">NumPy</span>
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">AsyncIO</span>
+                </div>
+              </div>
+
+              <div class="skill-item-card p-3 rounded-xl bg-surface-subtle border border-structural" data-category="ai">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono font-semibold text-sm text-primary">PyTorch</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cobalt/10 text-cobalt border border-cobalt/20 font-semibold">ACTIVE</span>
+                </div>
+                <p class="text-xs text-secondary mt-1">Custom neural layers, autograd, fine-tuning</p>
+                <div class="flex gap-1.5 mt-2">
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">Tensors</span>
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">CUDA</span>
+                </div>
+              </div>
+
+              <div class="skill-item-card p-3 rounded-xl bg-surface-subtle border border-structural" data-category="ai">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono font-semibold text-sm text-primary">Scikit-learn</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">ADVANCED</span>
+                </div>
+                <p class="text-xs text-secondary mt-1">Ensemble trees, cross-validation, drift metrics</p>
+                <div class="flex gap-1.5 mt-2">
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">Pipelines</span>
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">Metrics</span>
+                </div>
+              </div>
+
+              <div class="skill-item-card p-3 rounded-xl bg-surface-subtle border border-structural" data-category="ai">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono font-semibold text-sm text-primary">LLM Agents & RAG</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-vermilion/10 text-vermilion border border-vermilion/20 font-semibold">PROFICIENT</span>
+                </div>
+                <p class="text-xs text-secondary mt-1">Vector search, deterministic citation evals</p>
+                <div class="flex gap-1.5 mt-2">
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">Evals</span>
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">Rerankers</span>
+                </div>
+              </div>
+
+              <!-- Web & Tooling -->
+              <div class="skill-item-card p-3 rounded-xl bg-surface-subtle border border-structural" data-category="web">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono font-semibold text-sm text-primary">SQL & Relational DBs</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">ADVANCED</span>
+                </div>
+                <p class="text-xs text-secondary mt-1">Complex relational joins, indexing, normalization</p>
+                <div class="flex gap-1.5 mt-2">
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">PostgreSQL</span>
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">DuckDB</span>
+                </div>
+              </div>
+
+              <div class="skill-item-card p-3 rounded-xl bg-surface-subtle border border-structural" data-category="web">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono font-semibold text-sm text-primary">FastAPI & Async APIs</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">ADVANCED</span>
+                </div>
+                <p class="text-xs text-secondary mt-1">High-throughput streaming, Pydantic schemas</p>
+                <div class="flex gap-1.5 mt-2">
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">AsyncIO</span>
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">OpenAPI</span>
+                </div>
+              </div>
+
+              <div class="skill-item-card p-3 rounded-xl bg-surface-subtle border border-structural" data-category="web">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono font-semibold text-sm text-primary">Git & Linux Systems</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold">ADVANCED</span>
+                </div>
+                <p class="text-xs text-secondary mt-1">Branching workflows, bisecting, POSIX shell</p>
+                <div class="flex gap-1.5 mt-2">
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">Bash</span>
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">Systemd</span>
+                </div>
+              </div>
+
+              <div class="skill-item-card p-3 rounded-xl bg-surface-subtle border border-structural" data-category="web">
+                <div class="flex items-center justify-between">
+                  <span class="font-mono font-semibold text-sm text-primary">TypeScript / Next.js</span>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cobalt/10 text-cobalt border border-cobalt/20 font-semibold">PROFICIENT</span>
+                </div>
+                <p class="text-xs text-secondary mt-1">App router, server/client boundaries, Tailwind</p>
+                <div class="flex gap-1.5 mt-2">
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">React</span>
+                  <span class="text-[10px] font-mono text-muted bg-surface-card px-1.5 py-0.5 rounded">Framer</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-structural flex items-center justify-between text-xs font-mono text-muted">
+            <span>Configured in <code class="text-primary font-bold">src/data/portfolio.ts</code></span>
+            <span class="text-secondary">Zero Runtime Dependencies</span>
+          </div>
+        </div>
+
+        <!-- Bento Card 2: "First-Principles Engineering" (Col 5) -->
+        <div class="lg:col-span-5 editorial-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-mono text-vermilion uppercase tracking-wider font-semibold">Card 02 / Engineering Principles</span>
+            <h3 class="text-xl sm:text-2xl font-display font-bold text-primary tracking-tightest mt-1 mb-6">
+              First-Principles Discipline
+            </h3>
+
+            <div class="space-y-5">
+              <!-- Principle 1 -->
+              <div class="border-l-2 border-vermilion pl-4">
+                <div class="text-xs font-mono text-vermilion uppercase font-semibold">01 / Memory & Cache Locality</div>
+                <h4 class="text-sm font-semibold text-primary font-mono mt-0.5">Locality over Blind Abstractions</h4>
+                <p class="text-xs text-secondary mt-1 leading-relaxed">
+                  Understanding pointer indirection and contiguous memory in C is the exact discipline that enables efficient tensor batching and prevents GPU memory starvation.
+                </p>
+              </div>
+
+              <!-- Principle 2 -->
+              <div class="border-l-2 border-cobalt pl-4">
+                <div class="text-xs font-mono text-cobalt uppercase font-semibold">02 / Algorithmic Complexity</div>
+                <h4 class="text-sm font-semibold text-primary font-mono mt-0.5">Complexity over Brute Force</h4>
+                <p class="text-xs text-secondary mt-1 leading-relaxed">
+                  Throwing 128k context windows at unindexed data is an expensive substitute for proper indexing. Algorithmic pruning and graph heuristics solve bottlenecks deterministically.
+                </p>
+              </div>
+
+              <!-- Principle 3 -->
+              <div class="border-l-2 border-emerald-500 pl-4">
+                <div class="text-xs font-mono text-emerald-500 uppercase font-semibold">03 / Deterministic Guardrails</div>
+                <h4 class="text-sm font-semibold text-primary font-mono mt-0.5">Guardrails over Black-Box Faith</h4>
+                <p class="text-xs text-secondary mt-1 leading-relaxed">
+                  Models are statistical approximation engines. Reliable AI requires wrapping inference in strict deterministic harnesses: citation bounds and drift slice detectors.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-structural mt-6 text-xs font-mono text-muted italic">
+            "A clean mathematical guarantee always outlasts a brittle heuristic."
+          </div>
+        </div>
+
+        <!-- Bento Card 3: "Education & Base Telemetry" (Col 5) -->
+        <div class="lg:col-span-5 editorial-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-mono text-emerald-500 uppercase tracking-wider font-semibold">Card 03 / Geographic Base</span>
+            <h3 class="text-xl sm:text-2xl font-display font-bold text-primary tracking-tightest mt-1 mb-4">
+              Cluster University Srinagar
+            </h3>
+
+            <div class="space-y-4">
+              <div class="p-4 rounded-xl bg-surface-subtle border border-structural">
+                <div class="text-xs font-mono text-muted uppercase">Degree Program</div>
+                <div class="text-sm font-semibold text-primary font-mono mt-0.5">
+                  Computer Science Student
+                </div>
+                <div class="text-xs text-secondary mt-1">
+                  Focus: Systems Programming, DSA, Linear Algebra, Applied AI
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-surface-subtle border border-structural">
+                <div class="text-xs font-mono text-muted uppercase">Valley Telemetry</div>
+                <div class="text-sm font-semibold text-primary font-mono mt-0.5">
+                  Srinagar, Jammu & Kashmir (J&K)
+                </div>
+                <div class="text-xs text-secondary mt-1 flex items-center justify-between">
+                  <span>Coordinates: 34.0837° N, 74.7973° E</span>
+                  <span class="text-cobalt font-mono">1,585m Elev.</span>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-surface-subtle border border-structural flex items-center justify-between">
+                <div>
+                  <div class="text-[11px] font-mono text-muted uppercase">Timezone Telemetry</div>
+                  <div class="text-xs font-mono text-primary font-semibold mt-0.5">Asia/Kolkata (UTC+05:30)</div>
+                </div>
+                <div class="px-3 py-1.5 rounded-lg bg-surface-card border border-structural text-xs font-mono text-emerald-400 font-bold">
+                  ACTIVE
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-structural mt-6 text-xs font-mono text-muted">
+            Open to remote internships, on-site roles, and engineering collaborations.
+          </div>
+        </div>
+
+        <!-- Bento Card 4: "Currently Tinkering With" (Col 7) -->
+        <div class="lg:col-span-7 editorial-card rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <span class="text-xs font-mono text-amber-500 uppercase tracking-wider font-semibold">Card 04 / Live Tinkering Log</span>
+                <h3 class="text-xl sm:text-2xl font-display font-bold text-primary tracking-tightest mt-1">
+                  Currently Exploring in the Lab
+                </h3>
+              </div>
+              <span class="badge-vermilion text-[11px] font-mono px-2 py-0.5 rounded font-semibold uppercase">
+                ACTIVE EXPERIMENTS
+              </span>
+            </div>
+
+            <!-- Experiment items -->
+            <div class="space-y-3.5">
+              
+              <!-- Item 1 -->
+              <div class="p-3.5 rounded-xl bg-surface-subtle border border-structural">
+                <div class="flex items-center justify-between text-xs font-mono mb-1">
+                  <span class="font-bold text-primary">01 / Algorithmic Optimization in Java & C</span>
+                  <span class="text-vermilion font-semibold">ACTIVE</span>
+                </div>
+                <p class="text-xs text-secondary leading-relaxed">
+                  Benchmarking compact bit-packed adjacency matrices against pointer-heavy adjacency lists for graph searches up to 500,000 vertices. Goal: Zero heap allocations in the hot traversal loop.
+                </p>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="p-3.5 rounded-xl bg-surface-subtle border border-structural">
+                <div class="flex items-center justify-between text-xs font-mono mb-1">
+                  <span class="font-bold text-primary">02 / Small-Model Fine-Tuning & Quantization</span>
+                  <span class="text-cobalt font-semibold">ACTIVE</span>
+                </div>
+                <p class="text-xs text-secondary leading-relaxed">
+                  Experimenting with 1.5B–3B parameter models using LoRA and 4-bit AWQ quantization for local code and algorithmic reasoning evaluation. Target: Preserve 92%+ reasoning on a local laptop.
+                </p>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="p-3.5 rounded-xl bg-surface-subtle border border-structural">
+                <div class="flex items-center justify-between text-xs font-mono mb-1">
+                  <span class="font-bold text-primary">03 / Deterministic Evaluation Pipelines for Agents</span>
+                  <span class="text-muted font-semibold">RECENT</span>
+                </div>
+                <p class="text-xs text-secondary leading-relaxed">
+                  Drafting a standalone evaluation harness that isolates hallucinated tool arguments before dispatching HTTP API requests. Zero malformed schema calls during multi-step agent trajectories.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-structural mt-6 flex items-center justify-between text-xs font-mono text-muted">
+            <span>Updated: November 2026</span>
+            <span class="text-secondary font-medium">Telemetry: Srinagar, J&K</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       7. EDITORIAL PHILOSOPHY & BACKGROUND (03 / BACKGROUND)
+       ========================================================================= -->
+  <section id="background" class="py-16 sm:py-24 border-b border-structural bg-surface-card/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <div class="lg:col-span-5 space-y-6">
+          <div class="text-xs font-mono text-amber-500 uppercase tracking-widest font-semibold">
+            04 / BACKGROUND & PHILOSOPHY
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-primary tracking-tightest leading-tight">
+            The Bridge From Low-Level Bits to Applied Intelligence.
+          </h2>
+
+          <div class="p-5 rounded-2xl bg-surface-subtle border border-structural space-y-3 font-mono text-xs text-secondary">
+            <div class="text-primary font-bold uppercase text-[11px]">Academic Trajectory:</div>
+            <div>Cluster University Srinagar</div>
+            <div>Department of Computer Science</div>
+            <div>Srinagar, Jammu & Kashmir</div>
+            <div class="pt-2 border-t border-structural text-vermilion">
+              Focus: High-Performance Computing, DSA, Applied ML
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 space-y-6 text-base sm:text-lg text-secondary leading-relaxed font-sans">
+          <p>
+            Many enter Data Science from a high-level Python script or an API call. My foundation began differently: writing manual memory allocations in <strong class="text-primary font-mono font-medium">C</strong>, debugging object reference graphs in <strong class="text-primary font-mono font-medium">Java</strong>, and spending countless hours dissecting time/space invariants in <strong class="text-primary font-mono font-medium">Data Structures & Algorithms</strong>.
+          </p>
+
+          <p>
+            When you understand how cache misses degrade an inner loop in C, tensor operations in <strong class="text-primary font-mono font-medium">PyTorch</strong> stop being a black box. You see matrix multiplications for what they physically are: memory bandwidth schedules, contiguous buffer strides, and compute bounds.
+          </p>
+
+          <p>
+            At <strong class="text-primary font-medium">Cluster University Srinagar</strong>, surrounded by the Himalayas in the Kashmir valley, I have treated my education not as a passive lecture hall, but as an experimental software workshop. When I find an open question—whether in graph pathfinding efficiency, model hallucination bounds, or local covariate shift—I don't just read the paper. I write the code, instrument the telemetry, and benchmark the result.
+          </p>
+
+          <div class="pt-4 flex items-center gap-4">
+            <button data-copy-email class="btn-primary text-xs font-mono px-4 py-2.5 rounded-xl font-semibold">
+              Get In Touch With Muzaffer
+            </button>
+            <a href="https://github.com/muzaffer-ali-khan" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs font-mono px-4 py-2.5 rounded-xl">
+              Inspect GitHub Repos ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       8. EDITORIAL FOOTER & CONTACT (05 / CONTACT)
+       ========================================================================= -->
+  <footer id="contact" class="py-16 sm:py-24 bg-surface-card border-t border-structural relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-structural">
+        
+        <!-- Big Closing Editorial Statement -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="text-xs font-mono text-vermilion uppercase tracking-widest font-semibold">
+            05 / DIRECT CONTACT & COLLABORATION
+          </div>
+          <h2 class="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-primary tracking-tightest leading-[1.05]">
+            Have an interesting dataset, hard algorithmic problem, or wild build idea? <span class="text-vermilion italic">Let's connect</span>.
+          </h2>
+          <p class="text-base sm:text-lg text-secondary max-w-xl font-sans">
+            Currently open to Data Science and Machine Learning engineering internships, systems collaborations, and research discussions with forward-thinking teams.
+          </p>
+        </div>
+
+        <!-- Interactive Direct Actions Box -->
+        <div class="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-surface-subtle border border-structural space-y-5">
+          <div class="text-xs font-mono text-muted uppercase font-semibold">Direct Communication Channel</div>
+
+          <div class="p-4 rounded-xl bg-surface-card border border-structural">
+            <div class="text-[11px] font-mono text-muted">PRIMARY INBOX:</div>
+            <div class="text-base sm:text-lg font-mono font-bold text-primary mt-1 break-all">
+              muzaffer.email@domain.com
+            </div>
+            <div class="mt-3 flex items-center gap-2">
+              <button data-copy-email class="btn-primary text-xs font-mono px-3.5 py-1.5 rounded-lg font-semibold flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+                <span>Copy to Clipboard</span>
+              </button>
+              <a href="mailto:muzaffer.email@domain.com" class="btn-secondary text-xs font-mono px-3 py-1.5 rounded-lg">
+                Open Client ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="pt-2 space-y-2">
+            <div class="text-[11px] font-mono text-muted uppercase">Verified Profiles:</div>
+            <div class="grid grid-cols-3 gap-2 text-xs font-mono">
+              <a href="https://github.com/muzaffer-ali-khan" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-surface-card border border-structural text-center hover:border-vermilion text-secondary hover:text-primary transition-all">
+                GitHub ↗
+              </a>
+              <a href="https://linkedin.com/in/muzaffer-ali-khan" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-surface-card border border-structural text-center hover:border-cobalt text-secondary hover:text-primary transition-all">
+                LinkedIn ↗
+              </a>
+              <a href="https://leetcode.com/u/username" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-surface-card border border-structural text-center hover:border-amber-500 text-secondary hover:text-primary transition-all">
+                LeetCode ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="text-[11px] font-mono text-muted text-center pt-2">
+            Typical response window: &lt; 24 hours
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Colophon Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted">
+        <div class="flex items-center gap-2">
+          <span>© 2026 Muzaffer Ali Khan</span>
+          <span>·</span>
+          <span>Cluster University Srinagar</span>
+          <span>·</span>
+          <span class="text-secondary">Srinagar, J&K</span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <span class="text-secondary">Designed with editorial craft & first-principles code</span>
+          <a href="#" class="hover:text-primary transition-colors">Back to top ↑</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- =========================================================================
+       9. LAB NOTE DEEP-DIVE MODAL SYSTEM
+       ========================================================================= -->
+  <div id="lab-note-modal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-2xl bg-surface-card border border-structural shadow-2xl p-6 sm:p-8 lg:p-10 transition-all">
+      
+      <!-- Close Button Top Right -->
+      <button id="modal-close-btn" class="absolute top-5 right-5 p-2 rounded-xl bg-surface-subtle border border-structural text-muted hover:text-primary transition-colors" aria-label="Close modal">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Content injected dynamically by main.js -->
+      <div id="labnote-modal-content"></div>
+
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       10. FLOATING TOAST NOTIFICATION CONTAINER
+       ========================================================================= -->
+  <div id="toast-container" class="space-y-2"></div>
+
+
+  <!-- =========================================================================
+       SCRIPTS: Data + Interactive Canvas + Application Engine
+       ========================================================================= -->
+  <script src="src/data/portfolio.js"></script>
+  <script src="src/scripts/canvas-grid.js"></script>
+  <script src="src/scripts/main.js"></script>
+
+</body>
+</html>
